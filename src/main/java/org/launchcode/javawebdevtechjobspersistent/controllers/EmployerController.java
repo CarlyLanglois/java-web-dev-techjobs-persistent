@@ -15,21 +15,19 @@ import javax.validation.Valid;
 @RequestMapping("employers")
 public class EmployerController {
 
-    @Autowired
-    private EmployerRepository employerRepository;
+//    @Autowired
+//    private EmployerRepository employerRepository;
 
-    @RequestMapping("")
-    public String index(Model model) {
-
-        model.addAttribute("employers", employerRepository.findAll());
-        model.addAttribute("title", "Employers");
-
-        return "employers/index";
-    }
+//    @RequestMapping("")
+//    public String index(Model model) {
+//
+//        //model.addAttribute("employers", employerRepository.findAll());
+//
+//        return "employers/index";
+//    }
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
-        model.addAttribute("title", "Add Employer");
         model.addAttribute(new Employer());
         return "employers/add";
     }
@@ -39,19 +37,18 @@ public class EmployerController {
                                     Errors errors, Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Employer");
             return "employers/add";
         }
 
-        employerRepository.save(newEmployer);
+        //employerRepository.save(newEmployer);
         return "redirect:";
     }
 
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
-        Employer employer = employerRepository.findById(employerId).orElse(new Employer());
-        model.addAttribute("employer", employer);
+        //Employer employer = employerRepository.findById(employerId).orElse(new Employer());
+        //model.addAttribute("employer", employer);
         return "employers/view";
     }
 }
