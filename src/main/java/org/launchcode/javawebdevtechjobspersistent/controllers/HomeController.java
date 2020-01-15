@@ -17,8 +17,8 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    @Autowired
-    private JobRepository jobRepository;
+//    @Autowired
+//    private JobRepository jobRepository;
 
 //    @Autowired
 //    private EmployerRepository employerRepository;
@@ -29,7 +29,7 @@ public class HomeController {
     @RequestMapping("")
     public String index(Model model) {
 
-        model.addAttribute("jobs", jobRepository.findAll());
+        //model.addAttribute("jobs", jobRepository.findAll());
         model.addAttribute("title", "My Jobs");
 
         return "index";
@@ -59,15 +59,15 @@ public class HomeController {
 //        List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
 //        newJob.setSkills(skillObjs);
 
-        jobRepository.save(newJob);
+        //jobRepository.save(newJob);
         return "redirect:";
     }
 
     @GetMapping("view/{jobId}")
     public String displayViewJob(Model model, @PathVariable int jobId) {
 
-        Job job = jobRepository.findById(jobId).orElse(new Job());
-        model.addAttribute("job", job);
+        // Job job = jobRepository.findById(jobId).orElse(new Job());
+        // model.addAttribute("job", job);
         return "view";
     }
 
