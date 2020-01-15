@@ -1,11 +1,7 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
-import org.launchcode.javawebdevtechjobspersistent.models.Employer;
 import org.launchcode.javawebdevtechjobspersistent.models.Job;
-import org.launchcode.javawebdevtechjobspersistent.models.Skill;
-import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
 import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
-import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.launchcode.javawebdevtechjobspersistent.models.JobData;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by LaunchCode
@@ -28,31 +22,25 @@ public class ListController {
     @Autowired
     private JobRepository jobRepository;
 
-    @Autowired
-    private EmployerRepository employerRepository;
-
-    @Autowired
-    private SkillRepository skillRepository;
-
     static HashMap<String, String> columnChoices = new HashMap<>();
     static HashMap<String, Object> tableChoices = new HashMap<>();
 
-    public ListController (JobRepository jobRepository, EmployerRepository employerRepository, SkillRepository skillRepository) {
+    public ListController (JobRepository jobRepository) {
 
         columnChoices.put("all", "All");
         columnChoices.put("employer", "Employer");
         columnChoices.put("skills", "Skills");
         //tableChoices.put("all", "View All");
-        tableChoices.put("employer", employerRepository.findAll());
-        tableChoices.put("skills", skillRepository.findAll());
+//        tableChoices.put("employer", employerRepository.findAll());
+//        tableChoices.put("skills", skillRepository.findAll());
 
     }
 
     @RequestMapping("")
     public String list(Model model) {
         model.addAttribute("columns", columnChoices);
-        model.addAttribute("employers", employerRepository.findAll());
-        model.addAttribute("skills", skillRepository.findAll());
+//        model.addAttribute("employers", employerRepository.findAll());
+//        model.addAttribute("skills", skillRepository.findAll());
         model.addAttribute("tableChoices", tableChoices);
 
         return "list";
