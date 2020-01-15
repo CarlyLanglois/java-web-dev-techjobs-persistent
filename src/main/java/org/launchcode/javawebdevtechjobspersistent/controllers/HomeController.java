@@ -21,8 +21,8 @@ public class HomeController {
     @Autowired
     private JobRepository jobRepository;
 
-//    @Autowired
-//    private EmployerRepository employerRepository;
+    @Autowired
+    private EmployerRepository employerRepository;
 //
 //    @Autowired
 //    private SkillRepository skillRepository;
