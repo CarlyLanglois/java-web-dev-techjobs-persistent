@@ -10,21 +10,12 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("employers")
 public class EmployerController {
 
-//    @Autowired
-//    private EmployerRepository employerRepository;
-
-//    @RequestMapping("")
-//    public String index(Model model) {
-//
-//        //model.addAttribute("employers", employerRepository.findAll());
-//
-//        return "employers/index";
-//    }
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
@@ -40,15 +31,19 @@ public class EmployerController {
             return "employers/add";
         }
 
-        //employerRepository.save(newEmployer);
         return "redirect:";
     }
 
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
-        //Employer employer = employerRepository.findById(employerId).orElse(new Employer());
-        //model.addAttribute("employer", employer);
-        return "employers/view";
+        Optional optEmployer;
+        if (optEmployer.isPresent()) {
+            Employer employer = (Employer) optEmployer.get();
+            model.addAttribute("employer", employer);
+            return "employers/view";
+        } else {
+            return "redirect:../";
+        }
     }
 }
