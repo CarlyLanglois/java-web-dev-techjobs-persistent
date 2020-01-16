@@ -1,5 +1,6 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
+import org.launchcode.javawebdevtechjobspersistent.models.Employer;
 import org.launchcode.javawebdevtechjobspersistent.models.Job;
 import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class HomeController {
         if (errors.hasErrors()) {
             return "add";
         }
+        
 
         jobRepository.save(newJob);
         return "redirect:";
