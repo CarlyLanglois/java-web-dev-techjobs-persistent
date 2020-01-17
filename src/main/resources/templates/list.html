@@ -13,9 +13,9 @@
 
 <table class="centeredTable">
     <tr>
-        <th:block th:each="column : ${columns}">
-            <th th:text = "${column.value}"></th>
-        </th:block>
+        <th>All</th>
+        <th>Employer</th>
+        <th>Skill</th>
     </tr>
 
     <tr>
@@ -24,10 +24,13 @@
                 <a th:href="@{/list/jobs(column='All',value='View All')}">View All</a>
             </li>
         </td>
-        <td th:each="category : ${tableChoices}">
-            <li th:each="item : ${category.value}">
-                <a th:href="@{/list/jobs(column=${category.key},value=${item})}" th:text="${item}"></a>
-            </li>
+        <td>
+            <li th:each="employer : ${employers}">
+                <a th:href="@{/list/jobs(column=employer,value=${employer.name})}" th:text="${employer.name}"></a>
+        </td>
+        <td>
+            <li th:each="skill : ${skills}">
+                <a th:href="@{/list/jobs(column=skill,value=${skill.name})}" th:text="${skill.name}"></a>
         </td>
     </tr>
 </table>
