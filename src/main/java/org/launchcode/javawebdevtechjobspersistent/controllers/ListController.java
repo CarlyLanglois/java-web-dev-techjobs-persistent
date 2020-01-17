@@ -23,25 +23,17 @@ public class ListController {
     private JobRepository jobRepository;
 
     static HashMap<String, String> columnChoices = new HashMap<>();
-    static HashMap<String, Object> tableChoices = new HashMap<>();
 
-    public ListController (JobRepository jobRepository) {
+    public ListController () {
 
         columnChoices.put("all", "All");
         columnChoices.put("employer", "Employer");
         columnChoices.put("skills", "Skills");
-        //tableChoices.put("all", "View All");
-//        tableChoices.put("employer", employerRepository.findAll());
-//        tableChoices.put("skills", skillRepository.findAll());
 
     }
 
     @RequestMapping("")
     public String list(Model model) {
-        model.addAttribute("columns", columnChoices);
-//        model.addAttribute("employers", employerRepository.findAll());
-//        model.addAttribute("skills", skillRepository.findAll());
-        model.addAttribute("tableChoices", tableChoices);
 
         return "list";
     }
