@@ -10,3 +10,4 @@ import javax.transaction.Transactional;
 @Transactional
 public interface JobRepository extends CrudRepository<Job, Integer> {
 }
+
